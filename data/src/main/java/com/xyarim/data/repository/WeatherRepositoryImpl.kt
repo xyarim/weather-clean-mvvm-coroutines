@@ -21,7 +21,6 @@ internal class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherForecast(): Flow<Result<WeatherData>> =
         flow {
             emit(Result.Loading)
-            delay(10000)
             try {
                 val localWeatherData =
                     withContext(Dispatchers.IO) { localDataSource.getWeatherForecast() }
